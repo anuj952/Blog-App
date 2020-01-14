@@ -6,7 +6,19 @@ var express 	   		= require('express'),
 	mongoose			= require('mongoose');
 
 // APP CONFIG
-mongoose.connect("mongodb://localhost/blogapp");
+// mongoose.connect("mongodb://localhost/blogapp");
+
+mongoose.connect("mongodb+srv://anuj:anuj12345@cluster0-b0u1b.mongodb.net/test?retryWrites=true&w=majority",{
+	useNewUrlParser: true,
+	useCreateIndex: true
+}).then(() => {
+	console.log("connected to db");
+}).catch(err => {
+	console.log("ERROR:",err.message);
+});
+
+
+
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
